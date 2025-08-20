@@ -1,0 +1,448 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    /* Enhanced chart colors - more vibrant and distinct */
+    --chart-1: 220 70% 50%;    /* Blue */
+    --chart-2: 160 60% 45%;    /* Green */
+    --chart-3: 30 80% 55%;     /* Orange */
+    --chart-4: 280 65% 60%;    /* Purple */
+    --chart-5: 340 75% 55%;    /* Pink */
+    --chart-6: 200 80% 50%;    /* Cyan */
+    --chart-7: 45 90% 60%;     /* Yellow */
+    --chart-8: 15 85% 55%;     /* Red-Orange */
+    --chart-9: 260 70% 55%;    /* Indigo */
+    --chart-10: 120 70% 45%;   /* Lime */
+    --radius: 0.5rem;
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    /* Enhanced chart colors for dark mode - brighter and more saturated */
+    --chart-1: 220 75% 60%;    /* Bright Blue */
+    --chart-2: 160 70% 55%;    /* Bright Green */
+    --chart-3: 30 85% 65%;     /* Bright Orange */
+    --chart-4: 280 70% 70%;    /* Bright Purple */
+    --chart-5: 340 80% 65%;    /* Bright Pink */
+    --chart-6: 200 85% 60%;    /* Bright Cyan */
+    --chart-7: 45 95% 70%;     /* Bright Yellow */
+    --chart-8: 15 90% 65%;     /* Bright Red-Orange */
+    --chart-9: 260 75% 65%;    /* Bright Indigo */
+    --chart-10: 120 75% 55%;   /* Bright Lime */
+    --sidebar: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  /* Custom sidebar animations */
+  .sidebar-collapse-transition {
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .sidebar-content-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .sidebar-icon-transition {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Smooth text fade in/out */
+  .text-fade-in {
+    animation: textFadeIn 0.3s ease-in-out;
+  }
+  
+  .text-fade-out {
+    animation: textFadeOut 0.2s ease-in-out;
+  }
+  
+  @keyframes textFadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes textFadeOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+  }
+  
+  /* Logo scale animation */
+  .logo-scale {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .logo-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Toggle button hover effect */
+  .sidebar-toggle-hover {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .sidebar-toggle-hover:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Enhanced chart animations and effects */
+  .chart-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .chart-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-tooltip {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .chart-legend-item {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .chart-legend-item:hover {
+    transform: translateX(4px);
+    background-color: hsl(var(--accent));
+  }
+  
+  /* Chart loading animation */
+  .chart-loading {
+    animation: chartPulse 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes chartPulse {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  /* Chart data point animations */
+  .chart-dot {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .chart-dot:hover {
+    transform: scale(1.5);
+    filter: brightness(1.2);
+  }
+  
+  /* Chart bar hover effects */
+  .chart-bar {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .chart-bar:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+  
+  /* Chart area gradient animations */
+  .chart-area {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .chart-area:hover {
+    opacity: 0.9;
+  }
+  
+  /* Performance indicators */
+  .performance-indicator {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .performance-indicator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  /* Chart layout improvements */
+  .chart-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+  
+  .chart-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .chart-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* Chart responsive improvements */
+  .chart-responsive {
+    min-height: 320px;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .chart-responsive {
+      min-height: 280px;
+    }
+    
+    .chart-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+  
+  /* Chart loading states */
+  .chart-skeleton {
+    background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--accent)) 50%, hsl(var(--muted)) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Chart legend improvements */
+  .chart-legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .chart-legend-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+  }
+  
+  .chart-legend-item:hover {
+    background-color: hsl(var(--accent));
+    transform: translateX(4px);
+  }
+  
+  /* Chart tooltip improvements */
+  .chart-tooltip {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Chart axis improvements */
+  .chart-axis {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .chart-axis-line {
+    stroke: hsl(var(--border));
+    stroke-width: 1;
+  }
+  
+  .chart-grid-line {
+    stroke: hsl(var(--muted));
+    stroke-width: 0.5;
+    stroke-dasharray: 3 3;
+  }
+
+  /* Text containment improvements */
+  .text-contain {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .text-contain-multiline {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+  }
+  
+  /* Tooltip text containment */
+  .tooltip-text-safe {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .tooltip-content-safe {
+    max-width: 280px;
+    overflow: hidden;
+  }
+  
+  /* Legend text containment */
+  .legend-text-safe {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  
+  /* Chart container overflow protection */
+  .chart-overflow-safe {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .chart-overflow-safe * {
+    max-width: 100%;
+  }
+  
+  /* Hover text protection */
+  .hover-text-safe {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hover-text-safe:hover {
+    overflow: visible;
+    z-index: 10;
+  }
+  
+  /* Responsive text sizing */
+  .chart-text-responsive {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+  
+  .chart-title-responsive {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+  }
+  
+  /* Chart legend grid improvements */
+  .chart-legend-grid-safe {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+  
+  .chart-legend-item-safe {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    min-width: 0;
+  }
+  
+  .chart-legend-item-safe:hover {
+    background-color: hsl(var(--accent));
+    transform: translateX(2px);
+    overflow: visible;
+    z-index: 5;
+  }
+  
+  .chart-legend-item-safe > * {
+    flex-shrink: 0;
+  }
+  
+  .chart-legend-item-safe .legend-text {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
