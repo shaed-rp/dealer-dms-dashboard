@@ -27,6 +27,7 @@ import {
   AnalyticsPage,
   OrderManagementPage
 } from '@/pages';
+import { BreadcrumbTest } from '@/components/layout/BreadcrumbTest';
 import './App.css';
 
 // Create context for role management
@@ -114,6 +115,9 @@ function App() {
           
           {/* Analytics Routes */}
           <Route path="/analytics" element={<AnalyticsPage />} />
+          
+          {/* Test Routes */}
+          <Route path="/breadcrumb-test" element={<BreadcrumbTest />} />
           
           {/* Fallback Route */}
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -4,6 +4,7 @@ export * from './deals';
 export * from './service';
 export * from './dashboard';
 export * from './orders';
+export * from './breadcrumb';
 
 // Additional utility types
 export interface ApiResponse<T> {
